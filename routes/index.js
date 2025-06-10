@@ -5,6 +5,7 @@ const fs = require("fs");
 const CppCompiler = require("../api/CppCompiler");
 const Codebugger = require("../api/Codedebugger");
 const CodeRunner = require("../api/CodeRunner");
+const CodeDebugger = require("../api/Codedebugger");
 
 const router = express.Router();
 const upload = multer({ dest: "./public/uploads" });
@@ -60,7 +61,7 @@ router.post("/api/debug/cpp", (req, res) => {
           return;
         }
         console.log("File Written successfully");
-        CppCompiler(res, path_name, file_name, Codebugger);
+        CppCompiler(res, path_name, file_name, CodeDebugger);
       }
     );
   });

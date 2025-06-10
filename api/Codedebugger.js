@@ -1,4 +1,6 @@
 const child_process = require("child_process");
+const fs = require("fs");
+
 const CodeDebugger = (res, path_name, file_name) => {
   var gdb_raw_data = "";
 
@@ -22,12 +24,14 @@ const CodeDebugger = (res, path_name, file_name) => {
     console.log("code: " + code);
 
     const child_process = require("child_process");
-    var output = child_process.spawn(path_name + file_name + ".exe", [
-      "<",
+    var output = child_process.spawn(path_name + file_name + ".exe", []);
+
+    const inputData = fs.readFileSync(
       path_name + file_name + "Input" + ".txt",
-      ">",
-      path_name + file_name + "Output" + ".txt",
-    ]);
+      "utf-8"
+    );
+    output.stdin.write(inputData);
+    output.stdin.end();
 
     var outputdata = "";
     output.stderr.on("data", function (data) {
