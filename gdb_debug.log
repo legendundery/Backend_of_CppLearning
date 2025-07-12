@@ -1,0 +1,313 @@
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 10260.0x7538]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 21696.0x3d00]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 4876.0x3dfc]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 26944.0x6068]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 19432.0x3f6c]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 28776.0x4754]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 9940.0x25ac]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 17904.0x2e14]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 28220.0x6e28]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 19188.0x50d4]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 25352.0x1d00]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x140001490: file ./public/Code/text.cpp, line 37.
+[New Thread 24828.0x38d4]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 15024.0x30e4]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 28180.0x7b00]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 33800.0x2b50]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 26792.0x8c40]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 30476.0x80f0]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 35328.0x7548]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 38740.0x56f4]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 33292.0x791c]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 38540.0x6748]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 39288.0x727c]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 27640.0x8288]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 37448.0x9984]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 34484.0x87e4]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 30188.0x83c0]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 36996.0x64e8]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 21300.0x1fe8]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 31256.0x910c]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 27348.0x76f4]
+warning: Source file is more recent than executable.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 39632.0x54a0]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 38976.0x9b90]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 9908.0x90c8]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 38320.0x8e1c]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 15832.0x87e4]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 36168.0x8d08]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 19364.0x49f8]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 26880.0x6dd4]
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
