@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+typedef long long ll;
+namespace sscio {
+    inline ll pull() {
+        ll sign = 1LL, res = 0LL;
+        char ch = getchar();
+        // 跳过非数字字符，处理负号
+        for (; !isdigit(ch); ch = getchar()) {
+            if (ch == '-') sign *= -1LL;
+        }
+        // 拼接数字
+        for (; isdigit(ch); ch = getchar()) {
+            res = res * 10 + (ch - '0'); // 修正计算逻辑
+        }
+        return sign * res;
+    }
+}
+
+int main() {
+    ll n = sscio::pull(); // 用 long long 接收，避免溢出
+    printf("%lld\n", n);  // %lld 对应 long long 类型
+    return 0;
+}

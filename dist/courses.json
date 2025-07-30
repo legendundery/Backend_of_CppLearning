@@ -1,0 +1,26 @@
+{
+  "courses": [
+   {
+      "courseID":1,
+      "coursetitle": "",
+      "chapters": [
+        {
+          "chapterID":1, 
+          "name": "string",
+          "sections": [
+            {
+              "sectionID":1, 
+              "name": "string",
+              "videoPath": "url",
+              "codeFiles": [
+                { "fileID":1, "timepoint": 243, "code": "string", "input":"string"},
+                { "fileID":2, "timepoint": 254, "code": "string", "input":"string"}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

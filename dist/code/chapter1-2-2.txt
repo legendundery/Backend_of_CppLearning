@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+typedef long long ll;
+
+namespace sscio2{
+    inline char gch(){
+        static const int isz=0x1F1E33;
+        static char BufferString[isz],*pp1=BufferString,*pp2=BufferString;
+        return pp1==pp2&&(pp2=(pp1=BufferString)+fread(BufferString,1,isz,stdin),pp1==pp2)?EOF:*pp1++;
+    }
+    inline ll pull(){
+        ll sign=1LL,res=0LL;
+        char ch;
+        for(ch=gch();!isdigit(ch);ch=gch()){if(ch=='-'){sign*=-1LL;}}
+        for(;isdigit(ch);ch=gch()){res=res*10LL-'0'+ch;}
+        return sign*res;
+    }
+}
+
+int main(){
+    ll n=sscio2::pull();
+    printf("%lld",n);
+    return 0;
+}
