@@ -5,17 +5,21 @@ const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
 
-async function getUsers() {
+async function getUsers(res) {
   try {
-    const [rows, fields] = await promisePool.query("SELECT * FROM users");
-    return rows;
+    const [rows, fields] = await promisePool.query(
+      "SELECT * FROM users WHERE state = 1"
+    );
+    res.send({
+      users: rows,
+    });
   } catch (err) {
     console.error("查询出错:", err);
     throw err;
   }
 }
 
-async function register(username, email, password, res) {
+async function register(username, email, role, password, res) {
   // 检查用户是否已存在
   const [existing] = await promisePool.query(
     "SELECT * FROM users WHERE username = ? OR email = ?",
@@ -32,8 +36,8 @@ async function register(username, email, password, res) {
 
   // 创建用户
   const [result] = await promisePool.query(
-    "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
-    [username, email, passwordHash]
+    "INSERT INTO users (username, email,role, password_hash) VALUES (?, ?, ?,?)",
+    [username, email, role, passwordHash]
   );
 
   res.status(201).json({
@@ -87,4 +91,55 @@ async function profile(user_id, res) {
   res.json(users[0]);
 }
 
-module.exports = { getUsers, register, login, profile };
+async function updateUser(user_id, username, email, role, currentRole, res) {
+  const [users] = await promisePool.query(
+    "SELECT user_id, username, email, role FROM users WHERE user_id = ?",
+    [user_id]
+  );
+  if (users.length === 0) {
+    return res.status(404).json({ error: "用户未找到" });
+  }
+
+  if (currentRole !== "admin" && currentRole !== users[0].role) {
+    console.log(currentRole);
+    return res.status(401).json({ error: "无权限" });
+  }
+
+  promisePool.query(
+    "UPDATE users SET username = ?, email = ?, role = ? WHERE user_id = ?",
+    [username, email, role, user_id],
+    (err, result) => {
+      if (err) return res.status(500).send(err);
+      if (result.affectedRows === 0)
+        return res.status(404).send("User not found");
+      res.status(200).send({ id: user_id, ...req.body });
+    }
+  );
+}
+
+async function deleteUser(user_id, role, res) {
+  const [users] = await promisePool.query(
+    "SELECT user_id, username, email, role FROM users WHERE user_id = ?",
+    [user_id]
+  );
+  if (users.length === 0) {
+    return res.status(404).json({ error: "用户未找到" });
+  }
+
+  if (role !== "admin" && role !== users[0].role) {
+    return res.status(401).json({ error: "无权限" });
+  }
+
+  promisePool.query(
+    "UPDATE users SET state = 0 WHERE user_id = ?",
+    [user_id],
+    (err, result) => {
+      if (err) return res.status(500).send(err);
+      if (result.affectedRows === 0)
+        return res.status(404).send("User not found");
+      res.status(200).send("User deleted successfully");
+    }
+  );
+}
+
+module.exports = { getUsers, register, login, profile, deleteUser, updateUser };

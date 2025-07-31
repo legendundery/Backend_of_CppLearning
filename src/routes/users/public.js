@@ -6,9 +6,9 @@ const userSQL = require("../../db/users");
 
 router.post("/api/users/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, role, password } = req.body;
 
-    userSQL.register(username, email, password, res);
+    userSQL.register(username, email, role, password, res);
   } catch (error) {
     res.status(500).json({ error: "服务器错误" });
   }

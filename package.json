@@ -17,7 +17,7 @@
   },
   "nodemonConfig": {
     "watch": [
-      "/src"
+      "/"
     ],
     "ext": "js json py"
   }
