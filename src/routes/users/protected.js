@@ -36,7 +36,16 @@ router.post("/api/users/update", authenticateToken, async (req, res) => {
   try {
     const { user_id, username, email, role } = req.body;
     const currentRole = req.user.role;
-    userSQL.updateUser(user_id, username, email, role, currentRole, res);
+    const currentId = req.user.user_id;
+    userSQL.updateUser(
+      user_id,
+      username,
+      email,
+      role,
+      currentRole,
+      currentId,
+      res
+    );
   } catch (error) {
     res.status(500).json({ error: "服务器错误" });
   }
@@ -45,8 +54,9 @@ router.post("/api/users/update", authenticateToken, async (req, res) => {
 router.post("/api/users/delete", authenticateToken, async (req, res) => {
   try {
     const { user_id } = req.body;
-    const { role } = req.user;
-    userSQL.deleteUser(user_id, role, res);
+    const currentRole = req.user.role;
+    const currentId = req.user.user_id;
+    userSQL.deleteUser(user_id, currentRole, currentId, res);
   } catch (error) {
     res.status(500).json({ error: "服务器错误" });
   }

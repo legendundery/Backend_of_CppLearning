@@ -8,8 +8,10 @@ const path = require("path");
 const compileRouter = require("./compile");
 const usersProtected = require("./users/protected");
 const usersPublic = require("./users/public");
+const coursesPublic = require("./courses/public");
 
 router.use("/", usersProtected).use("/", usersPublic).use("/", compileRouter);
+router.use("/api/courses", coursesPublic);
 
 /*
 router.get("*", (req, res) => {
