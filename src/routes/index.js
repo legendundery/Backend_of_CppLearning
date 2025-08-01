@@ -13,10 +13,8 @@ const coursesPublic = require("./courses/public");
 router.use("/", usersProtected).use("/", usersPublic).use("/", compileRouter);
 router.use("/api/courses", coursesPublic);
 
-/*
 router.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/dist"));
+  res.sendFile(path.join(__dirname, "/"));
 });
-*/
 
 module.exports = router;

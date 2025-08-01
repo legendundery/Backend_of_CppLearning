@@ -46,10 +46,11 @@ router.post("/", handlecoverUpload, async (req, res) => {
     // 获取上传后的文件路径
 
     const coverUrl =
-      req.coverUrl ||
-      (req.file?.path
-        ? `${config.baseUrl}/uploads/images/${req.file.filename}`
-        : null);
+      "http://" +
+      (req.coverUrl ||
+        (req.file?.path
+          ? `${config.baseUrl}/images/${req.file.filename}`
+          : null));
 
     const [result] = await pool.execute(
       `INSERT INTO courses 
@@ -76,10 +77,11 @@ router.post("/lesson", handleVideoUpload, async (req, res) => {
 
     // 获取上传后的文件路径
     const videoUrl =
-      req.videoUrl ||
-      (req.file?.path
-        ? `${config.baseUrl}/uploads/videos/${req.file.filename}`
-        : null);
+      "http://" +
+      (req.videoUrl ||
+        (req.file?.path
+          ? `${config.baseUrl}/videos/${req.file.filename}`
+          : null));
 
     const filePath = req.file.path;
     const duration = await getVideoDuration(filePath);
@@ -87,6 +89,10 @@ router.post("/lesson", handleVideoUpload, async (req, res) => {
     if (!videoUrl) {
       return res.status(400).json({ error: "视频文件必须上传" });
     }
+
+    console.log(videoUrl);
+    console.log(filePath);
+
     const [result] = await pool.execute(
       `INSERT INTO lessons
          (course_id, title, video_url, duration, sort_order) 
@@ -109,9 +115,8 @@ router.post("/lesson", handleVideoUpload, async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const [rows] = await pool.query(`
-      SELECT course_id, title, instructor, category, duration_minutes, cover_url, price, is_free 
-      FROM video_courses 
-      WHERE publish_status = 'published'
+      SELECT * FROM courses 
+      WHERE status <> 'hidden'
     `);
     res.json(rows);
   } catch (err) {
@@ -121,7 +126,7 @@ router.get("/", async (req, res) => {
 });
 
 // 获取单个课程详情 - GET /api/courses/:id
-router.get("/:id", async (req, res) => {
+router.get("/id::id", async (req, res) => {
   try {
     const [rows] = await pool.query(
       `SELECT * FROM courses WHERE course_id = ? AND status <> 'hidden'`,
@@ -140,7 +145,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // 获取单个课程详情 - GET /api/courses/lessons/:id
-router.get("/lessons/:id", async (req, res) => {
+router.get("/lessons/id::id", async (req, res) => {
   try {
     const [rows] = await pool.query(
       `SELECT * FROM lessons WHERE course_id = ?`,

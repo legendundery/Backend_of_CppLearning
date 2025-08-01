@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 app.use(express.static("dist"));
+app.use(express.static("uploads"));
 
 const router = require("./src/routes/index.js");
 
