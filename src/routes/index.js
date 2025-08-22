@@ -10,8 +10,9 @@ const usersProtected = require("./users/protected");
 const usersPublic = require("./users/public");
 const coursesPublic = require("./courses/public");
 
-router.use("/", usersProtected).use("/", usersPublic).use("/", compileRouter);
-router.use("/api/courses", coursesPublic);
+//router.use("/", usersProtected).use("/", usersPublic);
+//router.use("/api/courses", coursesPublic);
+router.use("/", compileRouter);
 
 router.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/"));

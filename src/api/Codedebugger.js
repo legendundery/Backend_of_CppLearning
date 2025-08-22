@@ -8,7 +8,7 @@ const CodeDebugger = (res, path_name, file_name) => {
     "--silent",
     "--batch",
     "-x",
-    "./api/gdb_py.py",
+    "./src/api/gdb_py.py",
     path_name + file_name + ".exe",
   ]);
   pythonProcess.stdout.on("data", (data) => {

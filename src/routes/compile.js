@@ -36,7 +36,7 @@ router.post("/api/compile/cpp", (req, res) => {
 router.post("/api/debug/cpp", (req, res) => {
   const code = req.body.code;
   var input = req.body.input;
-  const path_name = "../public/Code/";
+  const path_name = "./public/Code/";
   const file_name = "text";
   fs.writeFile(path_name + file_name + ".cpp", code, (err) => {
     if (err) {
