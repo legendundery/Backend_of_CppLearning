@@ -11,7 +11,7 @@ const usersPublic = require("./users/public");
 const coursesPublic = require("./courses/public");
 
 //router.use("/", usersProtected).use("/", usersPublic);
-//router.use("/api/courses", coursesPublic);
+router.use("/api/courses", coursesPublic);
 router.use("/", compileRouter);
 
 router.get("*", (req, res) => {

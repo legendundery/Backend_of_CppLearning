@@ -41,7 +41,7 @@ const getVideoDuration = (filePath) => {
 // 创建课程 (包含文件上传)
 router.post("/", handlecoverUpload, async (req, res) => {
   try {
-    const { title, description, instructor_id, category } = req.body;
+    const { title, description, instructor_id, category, price } = req.body;
 
     // 获取上传后的文件路径
 
@@ -54,9 +54,9 @@ router.post("/", handlecoverUpload, async (req, res) => {
 
     const [result] = await pool.execute(
       `INSERT INTO courses 
-         (title, description, instructor_id, category, total_duration, cover_url) 
-         VALUES (?, ?, ?, ?, ?, ?)`,
-      [title, description, instructor_id, category, 0, coverUrl]
+         (title, description, instructor_id, category, price, total_duration, cover_url) 
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [title, description, instructor_id, category, price || 0, 0, coverUrl]
     );
 
     res.status(201).json({
@@ -84,7 +84,11 @@ router.post("/lesson", handleVideoUpload, async (req, res) => {
           : null));
 
     const filePath = req.file.path;
-    const duration = await getVideoDuration(filePath);
+    const durationRaw = await getVideoDuration(filePath);
+    let duration = Number(durationRaw);
+    if (!Number.isFinite(duration) || duration < 0) {
+      duration = 0;
+    }
 
     if (!videoUrl) {
       return res.status(400).json({ error: "视频文件必须上传" });
