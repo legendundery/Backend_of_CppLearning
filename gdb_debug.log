@@ -16,3 +16,28 @@ File(s) ./mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skippe
 File(s) ./mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
 File(s) ./mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
 File(s) ./mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 33180.0x131c]
+File(s) ./mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) ./mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) ./mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) ./mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) ./mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) ./mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000148a: file ./public/Code/text.cpp, line 11.
+[New Thread 39924.0x27b0]
+File(s) ./mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/* will be skipped when stepping.
+File(s) ./mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/* will be skipped when stepping.
+File(s) ./mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/*/*/* will be skipped when stepping.
+File(s) ./mingw64/x86_64-w64-mingw32/include/* will be skipped when stepping.
+File(s) ./mingw64/x86_64-w64-mingw32/include/*/* will be skipped when stepping.
+File(s) ./mingw64/x86_64-w64-mingw32/include/*/*/* will be skipped when stepping.
+Breakpoint 1 at 0x14000145d: file ./public/Code/text.cpp, line 4.
+[New Thread 36988.0x60d0]
+[New Thread 36988.0x5264]
+[New Thread 36988.0x4030]
+[Thread 36988.0x97e8 exited with code 3221225785]
+[Thread 36988.0x60d0 exited with code 3221225785]
+[Thread 36988.0x4030 exited with code 3221225785]
+Python Exception <class 'gdb.error'>: During startup program exited with code 0xc0000139.
+Error occurred in Python: During startup program exited with code 0xc0000139.

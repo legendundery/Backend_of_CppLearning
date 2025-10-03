@@ -7,6 +7,7 @@ const pool = mysql.createPool({
   user: process.env.DB_USER, // 数据库用户名
   password: process.env.DB_PASSWORD, // 数据库密码
   database: process.env.DB_NAME, // 要连接的数据库名称
+  charset: "utf8mb4", // 明确指定以防默认连接字符集不是 utf8mb4
   waitForConnections: true,
   connectionLimit: 10, // 连接池最大连接数
   queueLimit: 0,

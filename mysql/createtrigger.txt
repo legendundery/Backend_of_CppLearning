@@ -1,0 +1,6 @@
+CREATE TRIGGER update_course_duration 
+AFTER INSERT ON lessons
+FOR EACH ROW
+UPDATE courses 
+SET total_duration = (SELECT SUM(duration) FROM lessons WHERE course_id = NEW.course_id)
+WHERE course_id = NEW.course_id;

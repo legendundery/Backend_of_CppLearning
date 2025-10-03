@@ -1,15 +1,7 @@
 #include <iostream>
 using namespace std;
-int func(int n){
- if(n>1){
- return n*func(n-1);
- }
- return n;
-}
-
-int main() {
-  int a=5;
-  int b = func(a);
-  printf("%d\n",b);
+int main(){
+  cout<<"Hello world\n";
+  std::cout << "666";
   return 0;
 }

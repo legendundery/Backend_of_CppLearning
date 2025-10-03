@@ -108,20 +108,30 @@ async function updateUser(
     return res.status(404).json({ error: "用户未找到" });
   }
 
-  if (currentRole !== "admin" && currentId !== users[0].role) {
-    return res.status(401).json({ error: "无权限" });
+  // 仅管理员或本人可改
+  if (currentRole !== "admin" && currentId !== users[0].user_id) {
+    return res.status(403).json({ error: "无权限" });
   }
 
-  promisePool.query(
-    "UPDATE users SET username = ?, email = ?, role = ? WHERE user_id = ?",
-    [username, email, role, user_id],
-    (err, result) => {
-      if (err) return res.status(500).send(err);
-      if (result.affectedRows === 0)
-        return res.status(404).send("User not found");
-      res.status(200).send({ id: user_id, ...req.body });
+  try {
+    const [result] = await promisePool.query(
+      "UPDATE users SET username = ?, email = ?, role = ? WHERE user_id = ?",
+      [username, email, role, user_id]
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "用户未找到" });
     }
-  );
+    res.status(200).json({
+      user_id,
+      username,
+      email,
+      role,
+      message: "更新成功",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "更新失败" });
+  }
 }
 
 async function deleteUser(user_id, currentRole, currentId, res) {

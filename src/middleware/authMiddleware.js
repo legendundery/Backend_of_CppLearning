@@ -25,4 +25,12 @@ const requireRole = (role) => {
   };
 };
 
-module.exports = { authenticateToken, requireRole };
+// 多角色允许
+const allowRoles = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) return res.sendStatus(403);
+    next();
+  };
+};
+
+module.exports = { authenticateToken, requireRole, allowRoles };
