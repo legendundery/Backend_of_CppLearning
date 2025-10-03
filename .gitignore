@@ -3,3 +3,6 @@ node_modules
 !.vscode/extensions.json
 .idea
 .env
+*.mp4
+*.mkv
+*.webm
