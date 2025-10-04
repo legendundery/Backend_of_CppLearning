@@ -16,7 +16,13 @@ router.post("/api/compile/cpp", (req, res) => {
   fs.writeFile(path_name + file_name + ".cpp", code, (err) => {
     if (err) {
       console.error("Error Writing File:", err);
-      return;
+      return res
+        .status(200)
+        .send({
+          success: false,
+          stage: "prepare",
+          error: "write code failed: " + (err.message || err),
+        });
     }
     fs.writeFile(
       path_name + file_name + "Input" + ".txt",
@@ -24,7 +30,13 @@ router.post("/api/compile/cpp", (req, res) => {
       (err) => {
         if (err) {
           console.error("Error Writing Input File:", err);
-          return;
+          return res
+            .status(200)
+            .send({
+              success: false,
+              stage: "prepare",
+              error: "write input failed: " + (err.message || err),
+            });
         }
         console.log("File Written successfully");
         CppCompiler(res, path_name, file_name, CodeRunner);
@@ -41,7 +53,13 @@ router.post("/api/debug/cpp", (req, res) => {
   fs.writeFile(path_name + file_name + ".cpp", code, (err) => {
     if (err) {
       console.error("Error Writing File:", err);
-      return;
+      return res
+        .status(200)
+        .send({
+          success: false,
+          stage: "prepare",
+          error: "write code failed: " + (err.message || err),
+        });
     }
     fs.writeFile(
       path_name + file_name + "Input" + ".txt",
@@ -49,7 +67,13 @@ router.post("/api/debug/cpp", (req, res) => {
       (err) => {
         if (err) {
           console.error("Error Writing Input File:", err);
-          return;
+          return res
+            .status(200)
+            .send({
+              success: false,
+              stage: "prepare",
+              error: "write input failed: " + (err.message || err),
+            });
         }
         console.log("File Written successfully");
         CppCompiler(res, path_name, file_name, CodeDebugger);

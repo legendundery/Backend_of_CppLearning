@@ -18,6 +18,20 @@ function authenticateToken(req, res, next) {
   });
 }
 
+// 可选鉴权：有 token 就解析，没有就继续（用于游客可访问页面）
+function optionalAuth(req, res, next) {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  if (!token) return next();
+  jwt.verify(token, process.env.JWT_SECRET, (err, info) => {
+    if (!err) {
+      req.user = info.user;
+    }
+    // 无论成败都放行，错误情况下视为游客
+    next();
+  });
+}
+
 const requireRole = (role) => {
   return (req, res, next) => {
     if (req.user.role !== role) return res.sendStatus(403);
@@ -33,4 +47,4 @@ const allowRoles = (...roles) => {
   };
 };
 
-module.exports = { authenticateToken, requireRole, allowRoles };
+module.exports = { authenticateToken, optionalAuth, requireRole, allowRoles };

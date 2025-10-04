@@ -1,32 +1,83 @@
 const child_process = require("child_process");
 const fs = require("fs");
 
+/**
+ * 运行阶段
+ * 成功: { success:true, output }
+ * 失败: { success:false, stage:'run', error, output(可能部分), code }
+ */
 const CodeRunner = (res, path_name, file_name) => {
-  //input = input.split(' ').filter(item => item != '');
-  var output = child_process.spawn(path_name + file_name + ".exe", []);
+  let stdoutBuf = "";
+  let stderrBuf = "";
+  let exited = false;
+  let proc;
+  try {
+    proc = child_process.spawn(path_name + file_name + ".exe", []);
+  } catch (err) {
+    return res
+      .status(200)
+      .send({
+        success: false,
+        stage: "run",
+        error: err.message || String(err),
+        output: "",
+      });
+  }
 
-  const inputData = fs.readFileSync(
-    path_name + file_name + "Input" + ".txt",
-    "utf-8"
-  );
-  output.stdin.write(inputData);
-  output.stdin.end();
+  try {
+    const inputData = fs.readFileSync(
+      path_name + file_name + "Input" + ".txt",
+      "utf-8"
+    );
+    proc.stdin.write(inputData);
+    proc.stdin.end();
+  } catch (e) {
+    // 输入文件读取失败也当作运行失败
+    return res
+      .status(200)
+      .send({
+        success: false,
+        stage: "run",
+        error: "read input failed: " + (e.message || e),
+        output: "",
+      });
+  }
 
-  var outputdata = "";
-  output.stderr.on("data", function (data) {
-    console.log("run error:" + data.toString());
+  proc.stderr.on("data", (d) => {
+    const t = d.toString();
+    stderrBuf += t;
+    console.log("[Run][stderr]" + t);
   });
-  output.stdout.on("data", function (data) {
-    console.log("run output:" + data.toString());
-    outputdata = outputdata + data.toString();
-    console.log("output data:" + outputdata);
+  proc.stdout.on("data", (d) => {
+    const t = d.toString();
+    stdoutBuf += t;
+    console.log("[Run][stdout]" + t);
   });
-  output.on("close", (code) => {
-    console.log(code);
-    const jsondata = {
-      output: outputdata,
-    };
-    res.send(jsondata);
+  proc.on("error", (err) => {
+    if (exited) return;
+    exited = true;
+    res
+      .status(200)
+      .send({
+        success: false,
+        stage: "run",
+        error: err.message || String(err),
+        output: stdoutBuf,
+      });
+  });
+  proc.on("close", (code) => {
+    if (exited) return;
+    exited = true;
+    if (code !== 0 || stderrBuf.trim()) {
+      return res.status(200).send({
+        success: false,
+        stage: "run",
+        error: stderrBuf || `process exited with code ${code}`,
+        output: stdoutBuf,
+        code,
+      });
+    }
+    res.status(200).send({ success: true, output: stdoutBuf || "" });
   });
 };
 

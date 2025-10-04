@@ -5,14 +5,23 @@ const router = express.Router();
 const userSQL = require("../../db/users");
 const {
   authenticateToken,
+  optionalAuth,
   requireRole,
 } = require("../../middleware/authMiddleware");
 
 // 受保护的路由示例
-router.get("/api/users/profile", authenticateToken, async (req, res) => {
+router.get("/api/users/profile", optionalAuth, async (req, res) => {
   try {
+    if (!req.user) {
+      return res.json({
+        guest: true,
+        user_id: null,
+        role: "guest",
+        username: "游客",
+        email: null,
+      });
+    }
     const { user_id } = req.user;
-
     userSQL.profile(user_id, res);
   } catch (error) {
     res.status(500).json({ error: "服务器错误" });
