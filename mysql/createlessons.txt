@@ -21,3 +21,8 @@ CREATE TABLE `lessons` (
 --   ADD COLUMN homework_text MEDIUMTEXT NULL AFTER intro_text,
 --   ADD COLUMN materials_json JSON NULL AFTER duration,
 --   ADD COLUMN code_timeline_json LONGTEXT NULL AFTER materials_json;
+
+
+
+-- 版本过旧可以用这个:
+-- COLLATE=utf8mb4_general_ci;

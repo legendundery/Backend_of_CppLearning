@@ -1,4 +1,5 @@
-const child_process = require("child_process");
+const { spawn } = require("child_process");
+const { CXX } = require("./util/toolPath");
 const fs = require("fs");
 
 /**
@@ -12,16 +13,14 @@ const CodeRunner = (res, path_name, file_name) => {
   let exited = false;
   let proc;
   try {
-    proc = child_process.spawn(path_name + file_name + ".exe", []);
+    proc = spawn(CXX, [path_name + file_name + ".exe"]);
   } catch (err) {
-    return res
-      .status(200)
-      .send({
-        success: false,
-        stage: "run",
-        error: err.message || String(err),
-        output: "",
-      });
+    return res.status(200).send({
+      success: false,
+      stage: "run",
+      error: err.message || String(err),
+      output: "",
+    });
   }
 
   try {
@@ -33,14 +32,12 @@ const CodeRunner = (res, path_name, file_name) => {
     proc.stdin.end();
   } catch (e) {
     // 输入文件读取失败也当作运行失败
-    return res
-      .status(200)
-      .send({
-        success: false,
-        stage: "run",
-        error: "read input failed: " + (e.message || e),
-        output: "",
-      });
+    return res.status(200).send({
+      success: false,
+      stage: "run",
+      error: "read input failed: " + (e.message || e),
+      output: "",
+    });
   }
 
   proc.stderr.on("data", (d) => {
@@ -56,14 +53,12 @@ const CodeRunner = (res, path_name, file_name) => {
   proc.on("error", (err) => {
     if (exited) return;
     exited = true;
-    res
-      .status(200)
-      .send({
-        success: false,
-        stage: "run",
-        error: err.message || String(err),
-        output: stdoutBuf,
-      });
+    res.status(200).send({
+      success: false,
+      stage: "run",
+      error: err.message || String(err),
+      output: stdoutBuf,
+    });
   });
   proc.on("close", (code) => {
     if (exited) return;

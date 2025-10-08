@@ -1,4 +1,5 @@
-const child_process = require("child_process");
+const { spawn } = require("child_process");
+const { GDB } = require("./util/toolPath");
 const fs = require("fs");
 
 /**
@@ -12,7 +13,7 @@ const CodeDebugger = (res, path_name, file_name) => {
   let gdbExited = false;
   let gdbProcess;
   try {
-    gdbProcess = child_process.spawn("./mingw64/bin/gdb", [
+    gdbProcess = spawn(GDB, [
       "--silent",
       "--batch",
       "-x",
@@ -20,13 +21,11 @@ const CodeDebugger = (res, path_name, file_name) => {
       path_name + file_name + ".exe",
     ]);
   } catch (err) {
-    return res
-      .status(200)
-      .send({
-        success: false,
-        stage: "debug",
-        error: err.message || String(err),
-      });
+    return res.status(200).send({
+      success: false,
+      stage: "debug",
+      error: err.message || String(err),
+    });
   }
 
   gdbProcess.stdout.on("data", (data) => {
@@ -42,25 +41,21 @@ const CodeDebugger = (res, path_name, file_name) => {
   gdbProcess.on("error", (err) => {
     if (gdbExited) return;
     gdbExited = true;
-    res
-      .status(200)
-      .send({
-        success: false,
-        stage: "debug",
-        error: err.message || String(err),
-      });
+    res.status(200).send({
+      success: false,
+      stage: "debug",
+      error: err.message || String(err),
+    });
   });
   gdbProcess.on("close", (code) => {
     if (gdbExited) return;
     gdbExited = true;
     if (code !== 0 || gdbErr.trim()) {
-      return res
-        .status(200)
-        .send({
-          success: false,
-          stage: "debug",
-          error: gdbErr || `gdb exited with code ${code}`,
-        });
+      return res.status(200).send({
+        success: false,
+        stage: "debug",
+        error: gdbErr || `gdb exited with code ${code}`,
+      });
     }
     let gdbDataObj = {};
     try {
@@ -71,13 +66,11 @@ const CodeDebugger = (res, path_name, file_name) => {
         gdbDataObj = { raw: gdb_raw_data };
       }
     } catch (e) {
-      return res
-        .status(200)
-        .send({
-          success: false,
-          stage: "debug",
-          error: "parse gdb json failed: " + (e.message || e),
-        });
+      return res.status(200).send({
+        success: false,
+        stage: "debug",
+        error: "parse gdb json failed: " + (e.message || e),
+      });
     }
 
     // 运行阶段
@@ -88,13 +81,11 @@ const CodeDebugger = (res, path_name, file_name) => {
     try {
       runProc = child_process.spawn(path_name + file_name + ".exe", []);
     } catch (err) {
-      return res
-        .status(200)
-        .send({
-          success: false,
-          stage: "run",
-          error: err.message || String(err),
-        });
+      return res.status(200).send({
+        success: false,
+        stage: "run",
+        error: err.message || String(err),
+      });
     }
     try {
       const inputData = fs.readFileSync(
@@ -104,13 +95,11 @@ const CodeDebugger = (res, path_name, file_name) => {
       runProc.stdin.write(inputData);
       runProc.stdin.end();
     } catch (e) {
-      return res
-        .status(200)
-        .send({
-          success: false,
-          stage: "run",
-          error: "read input failed: " + (e.message || e),
-        });
+      return res.status(200).send({
+        success: false,
+        stage: "run",
+        error: "read input failed: " + (e.message || e),
+      });
     }
     runProc.stderr.on("data", (d) => {
       const t = d.toString();
@@ -125,28 +114,24 @@ const CodeDebugger = (res, path_name, file_name) => {
     runProc.on("error", (err) => {
       if (runExited) return;
       runExited = true;
-      res
-        .status(200)
-        .send({
-          success: false,
-          stage: "run",
-          error: err.message || String(err),
-          output: runStdout,
-        });
+      res.status(200).send({
+        success: false,
+        stage: "run",
+        error: err.message || String(err),
+        output: runStdout,
+      });
     });
     runProc.on("close", (c) => {
       if (runExited) return;
       runExited = true;
       if (c !== 0 || runStderr.trim()) {
-        return res
-          .status(200)
-          .send({
-            success: false,
-            stage: "run",
-            error: runStderr || `process exited with code ${c}`,
-            output: runStdout,
-            debug: gdbDataObj,
-          });
+        return res.status(200).send({
+          success: false,
+          stage: "run",
+          error: runStderr || `process exited with code ${c}`,
+          output: runStdout,
+          debug: gdbDataObj,
+        });
       }
       res
         .status(200)

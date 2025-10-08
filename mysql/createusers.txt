@@ -7,3 +7,8 @@ CREATE TABLE `users` (
   `state` tinyint DEFAULT '1',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+-- 版本过旧可以用这个:
+-- COLLATE=utf8mb4_general_ci;

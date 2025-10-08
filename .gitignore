@@ -5,9 +5,12 @@ dist
 !.vscode/extensions.json
 .idea
 .env
+.env0
+.env1
 *.mp4
 *.mkv
 *.webm
+*.zip
 
 uploads
 mingw64

@@ -88,7 +88,86 @@ async function profile(user_id, res) {
     return res.status(404).json({ error: "用户未找到" });
   }
 
-  res.json(users[0]);
+  const base = users[0];
+
+  // 预设统计（防止缺表或查询失败导致 500）
+  let stats = {
+    enrolledCourses: 0,
+    completedLessons: 0,
+    totalStudyMinutes: 0,
+    totalLessons: 0,
+  };
+  let recentActivities = [];
+
+  try {
+    const queries = [
+      // totalLessons: lessons 表总行数
+      promisePool
+        .query("SELECT COUNT(*) AS cnt FROM lessons")
+        .then(([r]) => ({ totalLessons: r[0].cnt }))
+        .catch(() => ({})),
+      // enrolledCourses: enrollments 表 distinct course_id
+      promisePool
+        .query(
+          "SELECT COUNT(DISTINCT course_id) AS cnt FROM enrollments WHERE user_id = ?",
+          [user_id]
+        )
+        .then(([r]) => ({ enrolledCourses: r[0].cnt }))
+        .catch(() => ({})),
+      // completedLessons: lesson_progress 表中 completed=1
+      promisePool
+        .query(
+          "SELECT COUNT(*) AS cnt FROM lesson_progress WHERE user_id = ? AND completed = 1",
+          [user_id]
+        )
+        .then(([r]) => ({ completedLessons: r[0].cnt }))
+        .catch(() => ({})),
+      // totalStudyMinutes: 优先 lesson_progress.duration_seconds 汇总
+      promisePool
+        .query(
+          "SELECT COALESCE(SUM(duration_seconds),0) AS sec FROM lesson_progress WHERE user_id = ?",
+          [user_id]
+        )
+        .then(([r]) => ({ totalStudyMinutes: Math.round(r[0].sec / 60) }))
+        .catch(() => ({})),
+      // recentActivities: 最近 10 条已完成课节 (若表存在)
+      promisePool
+        .query(
+          "SELECT lp.lesson_id, lp.completed_at, l.title AS lesson_title, l.course_id, c.title AS course_title FROM lesson_progress lp JOIN lessons l ON lp.lesson_id = l.lesson_id JOIN courses c ON l.course_id = c.course_id WHERE lp.user_id = ? AND lp.completed = 1 ORDER BY lp.completed_at DESC LIMIT 10",
+          [user_id]
+        )
+        .then(([r]) => ({ recentActivities: r }))
+        .catch(() => ({ recentActivities: [] })),
+    ];
+
+    const results = await Promise.all(queries);
+    // 合并结果
+    stats = { ...stats, ...results.reduce((acc, o) => ({ ...acc, ...o }), {}) };
+
+    // recentActivities 单独提取
+    const ra = results.find((o) =>
+      Object.prototype.hasOwnProperty.call(o, "recentActivities")
+    );
+    if (ra && ra.recentActivities) {
+      recentActivities = ra.recentActivities.map((row, idx) => ({
+        id: idx + 1,
+        lessonId: row.lesson_id,
+        courseId: row.course_id,
+        course: row.course_title,
+        lesson: row.lesson_title,
+        time: row.completed_at,
+      }));
+    }
+  } catch (e) {
+    // 静默失败：保持最小破坏性，不中断 profile
+    console.warn("profile stats aggregation failed:", e.message);
+  }
+
+  res.json({
+    ...base,
+    stats,
+    recentActivities,
+  });
 }
 
 async function updateUser(

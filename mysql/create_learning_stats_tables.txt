@@ -1,0 +1,55 @@
+-- 学习统计相关表结构示例 (如果已经有更合适的设计，可自行调整)
+-- 在执行前请根据实际库名选择性粘贴，需要的先建，不需要的可忽略。
+
+-- 1. 课程加入表：用户与课程的多对多关系
+-- 注意：现有 users.user_id / courses.course_id / lessons.lesson_id 均为 INT
+-- 这里统一改为 INT，避免外键类型不兼容 (之前示例用 BIGINT 触发 3780 错误)
+CREATE TABLE IF NOT EXISTS enrollments (
+  enrollment_id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  course_id INT NOT NULL,
+  enrolled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY uniq_user_course (user_id, course_id),
+  KEY idx_course (course_id),
+  CONSTRAINT fk_enroll_user FOREIGN KEY (user_id) REFERENCES users(user_id),
+  CONSTRAINT fk_enroll_course FOREIGN KEY (course_id) REFERENCES courses(course_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 2. 课节学习进度表：记录用户对每个 lesson 的完成情况及耗时（可追加更多字段）
+CREATE TABLE IF NOT EXISTS lesson_progress (
+  progress_id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  lesson_id INT NOT NULL,
+  completed TINYINT(1) DEFAULT 0,
+  duration_seconds INT DEFAULT 0,            -- 该课节累计学习秒数（也可用单独的 session 表统计）
+  last_position INT DEFAULT 0,               -- 如果是视频/代码课节，可记录进度位置（秒 / 行数）
+  completed_at TIMESTAMP NULL DEFAULT NULL,  -- 完成时间
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uniq_user_lesson (user_id, lesson_id),
+  KEY idx_lesson (lesson_id),
+  CONSTRAINT fk_progress_user FOREIGN KEY (user_id) REFERENCES users(user_id),
+  CONSTRAINT fk_progress_lesson FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 3. (可选) 学习会话表：更细颗粒度记录学习行为（便于统计每日/连续打卡）
+CREATE TABLE IF NOT EXISTS study_sessions (
+  session_id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  lesson_id INT NULL,
+  start_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  end_time TIMESTAMP NULL,
+  duration_seconds INT GENERATED ALWAYS AS (IF(end_time IS NULL, 0, TIMESTAMPDIFF(SECOND, start_time, end_time))) VIRTUAL,
+  KEY idx_session_user (user_id),
+  KEY idx_session_lesson (lesson_id),
+  CONSTRAINT fk_session_user FOREIGN KEY (user_id) REFERENCES users(user_id),
+  CONSTRAINT fk_session_lesson FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 使用建议：
+-- * 用户加入课程：INSERT IGNORE INTO enrollments(user_id, course_id) VALUES(?, ?)
+-- * 标记课节完成：UPDATE lesson_progress SET completed=1, completed_at=NOW() WHERE user_id=? AND lesson_id=?
+-- * 记录学习时长：可在前端定期上报增量秒数，后端执行：UPDATE lesson_progress SET duration_seconds = duration_seconds + ? WHERE user_id=? AND lesson_id=?
+-- * recentActivities 取最近完成课节：见 users.js profile 函数中的示例查询。
+-- * totalStudyMinutes 当前 profile 里用 lesson_progress.duration_seconds 汇总 /60。
+
+-- 如果暂时不需要这些统计功能，可只建 enrollments 和 lesson_progress 两张表。

@@ -2,7 +2,9 @@
   "name": "backend",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "package:tar": "tar -czf backend.tar.gz --exclude=node_modules --exclude=mingw64 --exclude=.idea --exclude=.git --exclude=uploads/videos --exclude=uploads/materials --exclude=uploads/images --exclude=.env --exclude=gdb_debug.log --exclude=**/gdb_debug.log --exclude=*.log .",
+    "package:clean": "powershell -NoLogo -Command \"if (Test-Path backend.tar.gz) { Remove-Item backend.tar.gz }\""
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

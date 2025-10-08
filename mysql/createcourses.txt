@@ -17,3 +17,27 @@ CREATE TABLE `courses` (
   FULLTEXT KEY `idx_search` (`title`,`description`),
   CONSTRAINT `instructer` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+
+-- 版本过旧可以用这个:
+-- CREATE TABLE `courses` (
+  `course_id` int NOT NULL AUTO_INCREMENT COMMENT '课程唯一ID',
+  `title` varchar(255) NOT NULL COMMENT '课程标题',
+  `description` text COMMENT '课程描述',
+  `instructor_id` int NOT NULL COMMENT '讲师ID（外键关联用户表）',
+  `category` varchar(255) DEFAULT NULL COMMENT '分类ID（外键关联分类表）',
+  `price` decimal(10,2) DEFAULT '0.00' COMMENT '课程价格（确保业务层控制价格>=0）',
+  `cover_url` varchar(255) DEFAULT NULL COMMENT '封面图URL',
+  `total_duration` int unsigned DEFAULT '0' COMMENT '总时长(分钟)',
+  `avg_rating` decimal(3,2) DEFAULT '0.00' COMMENT '平均评分（确保业务层控制评分>=0）',
+  `status` enum('draft','published','hidden') DEFAULT 'draft' COMMENT '课程状态',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`course_id`),
+  KEY `idx_instructor` (`instructor_id`),
+  KEY `idx_category` (`category`),
+  FULLTEXT KEY `idx_search` (`title`,`description`),
+  CONSTRAINT `instructer` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
