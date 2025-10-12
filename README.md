@@ -2,7 +2,8 @@
 
 ### 技术栈
 
-Express.js + mysql2 (Promise Pool) + multer 上传 + ffmpeg/fluent-ffmpeg 视频处理 + dotenv + jsonwebtoken + bcryptjs + CORS。
+Express.js + mysql2 (Promise Pool) + dotenv + jsonwebtoken + bcryptjs + CORS。
+（注：如需启用上传/转码，可接入 multer/ffmpeg，当前仓库以编译/调试与课程基础接口为主。）
 
 ### 主要目录
 
@@ -17,8 +18,9 @@ Backend_of_CppLearning/
       users.js          # 用户相关 SQL 方法
     routes/
       index.js          # 总路由聚合
-      courses/public.js # 课程 & 课时 CRUD / 上传
+      courses/public.js # 课程 & 课时（如启用上传再扩展）
       users/public.js   # 登录/注册（如需启用需挂载）
+      compile.js        # C++ 编译/运行、静态调试
     middleware/
       upload.js         # (假设存在) 视频/封面上传策略
   uploads/
@@ -36,6 +38,11 @@ DB_USER=root
 DB_PASSWORD=your_password
 DB_NAME=koishi
 JWT_SECRET=your_jwt_secret
+FRONTEND_ORIGINS=http://localhost:5174,http://localhost:8849
+# 可选：指定 g++ 路径（不设置则使用系统 PATH）
+# CXX_PATH=/usr/bin/g++
+# 运行超时（毫秒）
+RUN_TIMEOUT_MS=3000
 MAX_VIDEO_SIZE_MB=500
 MAX_IMAGE_SIZE_MB=5
 UPLOAD_DIR=./uploads
@@ -88,20 +95,24 @@ pm2 save
 
 ### API 约定（公开部分）
 
-| 方法   | 路径                     | 描述                          |
-| ------ | ------------------------ | ----------------------------- |
-| GET    | /api/courses             | 课程列表                      |
-| GET    | /api/courses/:id         | 单课程详情                    |
-| GET    | /api/courses/lessons/:id | 课程下课时列表                |
-| POST   | /api/courses             | 创建课程（multipart，含封面） |
-| POST   | /api/courses/lesson      | 创建课时（multipart，含视频） |
-| DELETE | /api/courses/:id         | 逻辑隐藏课程                  |
+| 方法   | 路径                     | 描述                                      |
+| ------ | ------------------------ | ----------------------------------------- |
+| POST   | /api/compile/cpp         | 编译并运行 C++（统一超时/错误返回结构）   |
+| POST   | /api/debug/cpp           | 静态度量（行数/函数/包含）+ 运行输出      |
+| GET    | /api/users/profile       | 用户基本信息 + 统计占位（安全降级）      |
+| GET    | /api/courses             | 课程列表（如启用课程模块）                |
+| GET    | /api/courses/:id         | 单课程详情（如启用课程模块）              |
+| GET    | /api/courses/lessons/:id | 课程下课时列表（如启用课程模块）          |
+| POST   | /api/courses             | 创建课程（如启用上传）                    |
+| POST   | /api/courses/lesson      | 创建课时（如启用上传）                    |
+| DELETE | /api/courses/:id         | 逻辑隐藏课程                              |
 
 用户（如果挂载 users.public）：
 | POST /api/users/register | 注册 |
 | POST /api/users/login | 登录，返回 token |
 
 > 登录后建议前端在请求头加 `Authorization: Bearer <token>`，并在后续扩展受保护接口时加入鉴权中间件。
+> 说明：刷新 token 接口（/auth/refresh）在当前仓库未提供，如前端含占位逻辑，请关闭或改为静默重登。
 
 ### 课程/视频上传说明
 
@@ -111,7 +122,7 @@ pm2 save
 
 ### CORS 策略
 
-在 `index.js` 中维护白名单：本地 `5174` / `8849` / 自定义环境变量 `FRONTEND_ORIGIN`。
+在 `index.js` 中维护白名单：本地 `5174` / `8849`，或使用环境变量 `FRONTEND_ORIGINS` 逗号分隔配置多个来源。
 若生产只需一个前端域，可精简为：
 
 ```js
@@ -186,17 +197,21 @@ zip -r backend-release.zip index.js src package.json pnpm-lock.yaml .env.example
 
 ### 常见问题排查
 
-| 现象                   | 可能原因                  | 处理                                |
-| ---------------------- | ------------------------- | ----------------------------------- |
-| 访问 /api/courses 超时 | MySQL 未启动 / 连接参数错 | 检查 .env / telnet 端口             |
-| 上传失败 400           | 表单字段名不符            | 确认视频字段 `video_file`、封面字段 |
-| 视频时长为 0           | ffprobe 解析失败          | 检查文件编码 / 安装依赖             |
-| CORS 报错              | 域不在白名单              | 添加到 allowOrigins                 |
+| 现象                          | 可能原因                              | 处理                                          |
+| ----------------------------- | ------------------------------------- | --------------------------------------------- |
+| 调用 /api/compile/cpp 报 ENOENT | 服务器未安装 g++ 或 PATH 不含 g++     | 安装系统 g++（Linux: build-essential），或设置 CXX_PATH |
+| 运行无响应或超时              | 用户代码阻塞 / 死循环                 | 调整 RUN_TIMEOUT_MS，提示用户优化代码         |
+| CORS 报错                     | 域不在白名单                          | 设置 FRONTEND_ORIGINS 或固定 origin            |
+| /api/courses 超时             | MySQL 未启动 / 连接参数错             | 检查 .env / 数据库连接                         |
+| Token 刷新 404                | 后端未提供 /auth/refresh              | 前端关闭自动刷新或改为静默重登                 |
 
 ### 与前端协同
 
 前端通过 `/api` 代理，无需写死域名；生产与开发保持统一路径结构，避免环境分支逻辑。
 
 ---
+
+依赖说明：
+- Windows 目录内包含 `mingw64/`（仅用于本地调试）；Linux/服务器部署请优先使用系统 g++。
 
 前端部署与构建说明见 `vide/README.md`。
